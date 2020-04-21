@@ -1,2 +1,13 @@
-<input type="text" [(ngModel)] = "title" />
+<input type="text" [(ngModel)]="title" />
 {{ title }}
+
+<app-product [product]></app-product>
+
+
+<div class="product-grid">
+
+  <app-product *ngFor="let item of products"
+  (productClick)="clickProduct($event)"
+  [product]=item></app-product>
+
+</div>
