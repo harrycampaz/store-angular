@@ -1,3 +1,4 @@
-<strong>{{product.title}}</strong>
+<h3 appHighlight>{{product.title | uppercase}}</h3>
 <img [src]="product.image" alt="" srcset=""/>
+<strong>{{product.price | currency}}</strong>
 <button (click) = "addToCart()">agregar al carrito</button>

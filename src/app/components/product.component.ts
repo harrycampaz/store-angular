@@ -31,7 +31,7 @@ export class ProductComponent implements OnInit, DoCheck, OnDestroy {
       image: "",
       description: "",
       price: 0
-    }
+    };
   }
 
   ngOnInit() {
