@@ -1,8 +1,8 @@
-<app-header></app-header>
+
 <div class="product-grid">
 
     <app-product *ngFor="let item of products"
     (productClick)="clickProduct($event)"
     [product]=item></app-product>
-  
+
   </div>
