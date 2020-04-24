@@ -29,12 +29,17 @@ const routes: Routes = [
         component: ContactComponent,
         canActivate: [AdminGuard]
       },
-      {
-        path:'**',
-        component: PageNotFoundComponent
-      }
     ]
   },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
+  },
+
 ];
 
 @NgModule({
