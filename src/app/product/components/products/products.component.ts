@@ -12,11 +12,13 @@ export class ProductsComponent implements OnInit {
   products: Product[];
   constructor(private productServise: ProductsService ) {
 
-    this.products = this.productServise.getAllProduct();
+    // this.products = this.productServise.getAllProduct();
+
+
    }
 
   ngOnInit() {
-
+    this.fechProduct();
   }
 
 
@@ -24,6 +26,14 @@ export class ProductsComponent implements OnInit {
     console.log('Clic product');
     console.log(id);
 
+  }
+
+  fechProduct() {
+    this.productServise.getAllProduct()
+    .subscribe(products => {
+      this.products = products;
+      console.log(products);
+    });
   }
 
 }
