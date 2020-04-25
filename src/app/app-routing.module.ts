@@ -29,7 +29,15 @@ const routes: Routes = [
         component: ContactComponent,
         canActivate: [AdminGuard]
       },
+      {
+        path: 'order',
+        loadChildren: () => import('./order/order.module').then(m => m.OrderModule)
+      }
     ]
+  },
+  {
+    path: 'i',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
     path: 'admin',

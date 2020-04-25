@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "store-dezzapps",
+      "public": "dist/store-dezzapps",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

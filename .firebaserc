@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "platziapps": {
+      "hosting": {
+        "store-dezzapps": [
+          "platziapps"
+        ]
+      }
+    }
+  }
+}

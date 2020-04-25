@@ -1,0 +1,58 @@
+<mat-toolbar>
+  <span>Store</span>
+</mat-toolbar>
+
+<br />
+<div class="row center-xs">
+  <div class="col-xs-6">
+    <div class="box">
+      <div class="example-container">
+        <form [formGroup]="form" (ngSubmit)="sendLogin($event)">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Login</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="row">
+                <div class="col-xs">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Correo</mat-label>
+                    <input matInput formControlName="email" type="email">
+                  </mat-form-field>
+                  <div *ngIf="f.email.errors && f.email.dirty" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Email is required</div>
+                </div>
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs">
+                  <mat-form-field appearance="fill">
+                    <mat-label>contraseña</mat-label>
+                    <input matInput type="password" formControlName="password">
+                  </mat-form-field>
+
+                  <div *ngIf="f.password.errors && f.password.dirty" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Password is required</div>
+                    <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                </div>
+
+                </div>
+              </div>
+            </mat-card-content>
+
+            <mat-card-actions>
+              <button [disabled]="form.invalid" mat-raised-button type="submit">Login</button>
+            </mat-card-actions>
+
+          </mat-card>
+
+        </form>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
