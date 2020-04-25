@@ -1,5 +1,5 @@
 import { environment } from './../../../../environments/environment.prod';
-import { Product } from '../../../model/product';
+import { Product } from '../../model/product';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 

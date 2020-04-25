@@ -8,7 +8,8 @@ import {
   SimpleChanges,
   DoCheck,
   OnDestroy } from '@angular/core';
-import { Product } from '../../../model/product';
+import { Product } from '../../../core/model/product';
+import { CartService } from 'src/app/core/services/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -16,12 +17,12 @@ import { Product } from '../../../model/product';
   styleUrls: ['./product.component.scss']
 })
 
-export class ProductComponent implements OnInit, DoCheck, OnDestroy {
+export class ProductComponent implements OnInit{
 
   @Input() product: Product;
   @Output() productClick: EventEmitter<any>;
 
-  constructor() {
+  constructor(private cartService: CartService) {
 
     this.productClick = new EventEmitter();
 
@@ -45,21 +46,21 @@ export class ProductComponent implements OnInit, DoCheck, OnDestroy {
   //   console.log(changes);
   // }
 
-  ngDoCheck(): void {
+  // ngDoCheck(): void {
 
-    console.log('do Chaedj');
+  //   console.log('do Chaedj');
 
-  }
+  // }
 
-  ngOnDestroy(): void {
-    console.log('OnDestroy');
+  // ngOnDestroy(): void {
+  //   console.log('OnDestroy');
 
-  }
+  // }
 
   addToCart() {
     console.log('Agregar al carrito');
-
-    this.productClick.emit(this.product.id);
+    this.cartService.addCart(this.product);
+    // this.productClick.emit(this.product.id);
   }
 
 }
