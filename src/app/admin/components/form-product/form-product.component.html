@@ -28,7 +28,7 @@
 
             <input matInput type="number" formControlName="price" placeholder="Ingresa price">
           </mat-form-field>
-          <div *ngIf="getPriceField().errors && getPriceField().dirty" >
+          <div *ngIf="getPriceField().valueChanges && getPriceField().dirty" >
             <p *ngIf="getPriceField().hasError('price_invalid')">Este campo no es valido</p>
             <p *ngIf="getPriceField().hasError('required')">Este campo no es valido</p>
           </div>

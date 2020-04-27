@@ -68,6 +68,7 @@ export class FormProductComponent implements OnInit {
     const fileRef = this.afStorage.ref(dir);
     const task = this.afStorage.upload(dir, file);
 
+
     task.snapshotChanges()
       .pipe(
         finalize(() => {

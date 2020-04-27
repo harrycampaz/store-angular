@@ -34,7 +34,7 @@ export class ProductEditComponent implements OnInit {
         //   title: product.title
         // });
 
-        this.form.patchValue(product)
+        this.form.patchValue(product);
 
       });
     });
