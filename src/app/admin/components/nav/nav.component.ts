@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
@@ -16,6 +18,20 @@ export class NavComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, private authService: AuthService, private router: Router) {}
+
+  logout() {
+
+    this.authService.logout().then(response => {
+     console.log('Cerrada');
+     this.router.navigate(['/']);
+    }, error => {
+      console.log('problemas');
+    }).catch(error => {
+      console.log('Problemas al cerrar');
+
+    });
+
+  }
 
 }

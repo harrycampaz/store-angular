@@ -28,18 +28,20 @@ export class LoginComponent implements OnInit {
 
     if (this.form.valid) {
 
-
       const { email, password } = this.form.value;
-
       console.log(email, password);
-      // this.authService.createUser(email, password).then(response => {
+      this.authService.loginUser(email, password).then(response => {
 
-      //   console.log('Admin: ', response);
+        console.log('Admin: ', response);
+        this.router.navigate(['/admin']);
 
-      // }, error => {
-      //   console.log('error');
+      }, error => {
+        console.log('error: ', error);
+        alert(error.message );
 
-      // });
+      }).catch(() => {
+        alert('no es valido');
+      });
     }
 
   }

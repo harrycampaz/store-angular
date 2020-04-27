@@ -31,11 +31,10 @@ export class RegisterComponent implements OnInit {
 
 
       const { email, password } = this.form.value;
-
-      console.log(email, password);
       this.authService.createUser(email, password).then(response => {
 
         console.log('Admin: ', response);
+        this.router.navigate(['i/login']);
 
       }, error => {
 
