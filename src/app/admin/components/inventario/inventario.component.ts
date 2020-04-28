@@ -10,9 +10,9 @@ import { InventarioDataSource, InventarioItem } from './inventario-datasource';
   styleUrls: ['./inventario.component.scss']
 })
 export class InventarioComponent implements AfterViewInit, OnInit {
-  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: false}) sort: MatSort;
-  @ViewChild(MatTable, {static: false}) table: MatTable<InventarioItem>;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatTable) table: MatTable<InventarioItem>;
   dataSource: InventarioDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
