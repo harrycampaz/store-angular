@@ -46,6 +46,14 @@ export class LoginComponent implements OnInit {
 
   }
 
+  sendLoginApi(event: Event){
+    event.preventDefault();
+    this.authService.loginResApi('nicolas@nicolas.com', '12456')
+    .subscribe(data => {
+      console.log(data);
+    });
+  }
+
   private buildForm() {
 
     this.form = this.formBuilder.group({

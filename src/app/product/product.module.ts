@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductRoutingModule } from './product-routing.module';
-import { MaterialModule } from '../material/material.module';
+import { MaterialModule } from '@material/material.module';
 
 
 

@@ -3,6 +3,11 @@ import { Product } from '../../../core/model/product';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ProductsService } from 'src/app/core/services/products/products.service';
+import { switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+//import * as FileSaver from 'file-saver';
+
+// import * as FileSaver from 'file-server';
 
 @Component({
   selector: 'app-product-details',
@@ -11,29 +16,69 @@ import { ProductsService } from 'src/app/core/services/products/products.service
 })
 export class ProductDetailsComponent implements OnInit {
 
-  product: Product;
+  //product: Product;
+
+  product$: Observable<Product>;
   constructor( private route: ActivatedRoute, private productService: ProductsService) {
   }
   ngOnInit() {
 
-    this.route.params.subscribe((params: Params) => {
-      const id = params.id;
-      this.fechProduct(id);
+    // this.route.params
+    // .pipe(
+    //   switchMap((params: Params) => {
+    //     return this.productService.getProduct(params.id);
+    // })
+    // )
+    // .subscribe(product => {
+    //   this.product = product;
+    // });
 
-      // this.create();
-      // this.update();
+    //this.getRandomUser();
 
-      this.deleteProduct();
-    });
+    this.getFile();
+
+    this.product$ = this.route.params
+    .pipe(
+      switchMap((params: Params) => {
+        return this.productService.getProduct(params.id);
+    }));
 
   }
 
-  fechProduct(id: number) {
-    this.productService.getProduct(id)
-    .subscribe(product => {
-      this.product = product;
+  // fechProduct(id: number) {
+  //   this.productService.getProduct(id)
+  //   .subscribe(product => {
+  //     this.product = product;
+  //   });
+  // }
+
+  getRandomUser() {
+    this.productService.getRandonUser()
+    .subscribe(
+      users => {
+
+      console.log(users);
+
+    }, error => {
+      console.log(error);
+
     });
   }
+
+  getFile() {
+    this.productService.getFile()
+    .subscribe(content => console.log(content)
+    );
+
+  }
+
+  // getFileDownload() {
+  //   this.productService.getFile()
+  //     .subscribe(content => {
+  //       var blob = new Blob([content], {type: 'text/plain;charset=utf-8'});
+  //       FileSaver.saveAs(blob, 'archivo.txt');
+  //     });
+  //   }
 
   create() {
     const newProd: Product = {
@@ -66,5 +111,6 @@ export class ProductDetailsComponent implements OnInit {
     this.productService.deleteProduct(300).subscribe(response => console.log(response)
     );
   }
+
 
 }

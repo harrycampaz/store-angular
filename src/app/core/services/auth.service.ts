@@ -1,3 +1,8 @@
+import { TokenService } from './token.service';
+import { AuthInterceptor } from '@core/services/auth.interceptor';
+import { tap } from 'rxjs/operators';
+import { environment } from './../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 
@@ -6,7 +11,9 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class AuthService {
 
-  constructor(private af: AngularFireAuth) { }
+  url = environment.url_api;
+
+  constructor(private af: AngularFireAuth, private http: HttpClient, private token: TokenService) { }
 
   createUser(email: string, password: string){
     return this.af.auth.createUserWithEmailAndPassword(email, password);
@@ -21,5 +28,13 @@ export class AuthService {
 
   hasUser() {
     return this.af.authState;
+  }
+
+  loginResApi(email: string, password: string) {
+    return this.http.post(this.url + 'auth', {email, password}).pipe(
+      tap((data: {token: string}) => {
+        this.token.saveToken(data.token);
+      })
+    );
   }
 }
