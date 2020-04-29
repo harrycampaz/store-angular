@@ -3,7 +3,7 @@ import { environment } from './../../../../environments/environment.prod';
 import { Product } from '../../model/product';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import * as Sentry from '@sentry/browser';
+// import * as Sentry from '@sentry/browser';
 
 
 import { map, catchError, retry } from 'rxjs/operators';
@@ -64,7 +64,7 @@ export class ProductsService {
 
   private handleError(error: HttpErrorResponse) {
     console.log(error);
-    Sentry.captureException(error);
+    // Sentry.captureException(error);
     return throwError('Ups somethig error');
   }
 }
