@@ -8,7 +8,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MaterialModule } from '../material/material.module';
 
 
-
 @NgModule({
   declarations: [
     HighlightDirective,
@@ -24,7 +23,8 @@ import { MaterialModule } from '../material/material.module';
     CommonModule,
     RouterModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
   ]
 })
 export class SharedModule { }

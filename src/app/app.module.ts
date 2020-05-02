@@ -22,6 +22,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 
 //  import * as Sentry from '@sentry/browser';
 import { AuthInterceptor } from '@core/services/auth.interceptor';
+import { ServiceWorkerModule } from '@angular/service-worker';
+
 
 // Sentry.init({
 //   dsn: 'https://c676c48246dd458ea1e3a91b5c5fb31b@o385000.ingest.sentry.io/5217124'
@@ -36,7 +38,7 @@ import { AuthInterceptor } from '@core/services/auth.interceptor';
     LayoutComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     FormsModule,
     SharedModule,
@@ -45,7 +47,8 @@ import { AuthInterceptor } from '@core/services/auth.interceptor';
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
