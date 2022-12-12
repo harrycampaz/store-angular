@@ -31,7 +31,7 @@
     "@angular/service-worker": "~9.1.3",
     "@nguniversal/express-engine": "^9.1.0",
     "@sentry/browser": "^5.15.5",
-    "express": "^4.15.2",
+    "express": "^4.17.3",
     "file-server": "^2.1.0",
     "firebase": ">= 5.5.7 <8",
     "flexboxgrid": "^6.3.1",
